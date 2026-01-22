@@ -154,7 +154,7 @@ export function Navbar() {
               <span className="absolute left-2 text-amber-500">
                 <Sun className="h-4 w-4" />
               </span>
-              <span className="absolute right-2 text-slate-200">
+              <span className="absolute right-2 text-slate-500 dark:text-slate-200">
                 <Moon className="h-4 w-4" />
               </span>
               <span
@@ -204,7 +204,7 @@ export function Navbar() {
                 <span className="absolute left-2 text-amber-500">
                   <Sun className="h-4 w-4" />
                 </span>
-                <span className="absolute right-2 text-slate-200">
+                <span className="absolute right-2 text-slate-500 dark:text-slate-200">
                   <Moon className="h-4 w-4" />
                 </span>
                 <span
