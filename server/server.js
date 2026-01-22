@@ -1,7 +1,10 @@
+const path = require('path');
 const app = require('./app');
 const connectDatabase = require('./config/database');
 const cloudinary = require('cloudinary');
 const PORT = process.env.PORT || 4000;
+
+require('dotenv').config({ path: path.resolve(__dirname, 'config/config.env') });
 
 // UncaughtException Error
 process.on('uncaughtException', (err) => {
@@ -9,7 +12,7 @@ process.on('uncaughtException', (err) => {
     process.exit(1);
 });
 
-// connectDatabase();
+connectDatabase();
 
 cloudinary.config({
     cloud_name: process.env.CLOUDINARY_NAME,

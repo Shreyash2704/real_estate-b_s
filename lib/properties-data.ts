@@ -23,6 +23,14 @@ export const properties = [
     roi: 9.1,
     image: "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80"
   },
+  {
+    id: 4,
+    title: "Skyline Smart Tower",
+    location: "Austin, TX",
+    price: 620000,
+    roi: 8.2,
+    image: "https://images.unsplash.com/photo-1448630360428-65456885c650?ixlib=rb-4.0.3&auto=format&fit=crop&w=1170&q=80"
+  },
 ]
 
 export type Property = {

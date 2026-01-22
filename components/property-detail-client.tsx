@@ -14,13 +14,13 @@ export function PropertyDetailClient({ id }: { id: string }) {
   const property = properties.find((p: Property) => p.id === parseInt(id))
 
   if (!property) {
-    return <div className="min-h-screen bg-[#0B1120] text-gray-100 p-8">
-      <h1 className="text-2xl font-bold">Property not found</h1>
+    return <div className="min-h-screen bg-background text-foreground p-8 transition-colors duration-300">
+      <h1 className="text-2xl font-bold text-slate-900 dark:text-white transition-colors duration-300">Property not found</h1>
     </div>
   }
 
   return (
-    <div className="min-h-screen bg-[#0B1120] text-gray-100">
+    <div className="min-h-screen bg-background text-foreground transition-colors duration-300">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
         <button 
           onClick={() => router.back()}
@@ -30,7 +30,7 @@ export function PropertyDetailClient({ id }: { id: string }) {
           Back to Properties
         </button>
         
-        <Card className="overflow-hidden bg-gray-700/50 border-gray-600">
+        <Card className="overflow-hidden bg-white dark:bg-gray-700/50 border-slate-200 dark:border-gray-600 transition-colors duration-300">
           <div className="relative h-96">
             <Image
               src={property.image}
@@ -41,16 +41,16 @@ export function PropertyDetailClient({ id }: { id: string }) {
             />
           </div>
           <CardContent className="p-6">
-            <h1 className="text-3xl font-bold text-white mb-2">{property.title}</h1>
-            <p className="text-xl text-gray-300 mb-4">{property.location}</p>
+            <h1 className="text-3xl font-bold text-slate-900 dark:text-white mb-2 transition-colors duration-300">{property.title}</h1>
+            <p className="text-xl text-slate-600 dark:text-gray-300 mb-4 transition-colors duration-300">{property.location}</p>
             
             <div className="grid grid-cols-2 gap-4 mb-6">
-              <div className="bg-gray-800/50 p-4 rounded-lg">
-                <h3 className="text-lg font-semibold text-gray-300">Price</h3>
+              <div className="bg-slate-100 dark:bg-gray-800/50 p-4 rounded-lg transition-colors duration-300">
+                <h3 className="text-lg font-semibold text-slate-600 dark:text-gray-300 transition-colors duration-300">Price</h3>
                 <p className="text-2xl font-bold text-[#3B82F6]">${property.price.toLocaleString()}</p>
               </div>
-              <div className="bg-gray-800/50 p-4 rounded-lg">
-                <h3 className="text-lg font-semibold text-gray-300">Expected ROI</h3>
+              <div className="bg-slate-100 dark:bg-gray-800/50 p-4 rounded-lg transition-colors duration-300">
+                <h3 className="text-lg font-semibold text-slate-600 dark:text-gray-300 transition-colors duration-300">Expected ROI</h3>
                 <p className="text-2xl font-bold text-[#10B981]">{property.roi}%</p>
               </div>
             </div>

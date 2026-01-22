@@ -60,27 +60,6 @@ const CHAIN_PARAMS: Record<string, ChainParam> = {
     rpcUrls: ['https://sepolia-rollup.arbitrum.io/rpc'],
     blockExplorerUrls: ['https://sepolia.arbiscan.io'],
   },
-  '0x13882': {
-    chainId: '0x13882',
-    chainName: 'Polygon Amoy',
-    nativeCurrency: { name: 'MATIC', symbol: 'MATIC', decimals: 18 },
-    rpcUrls: ['https://rpc-amoy.polygon.technology'],
-    blockExplorerUrls: ['https://amoy.polygonscan.com'],
-  },
-  '0x61': {
-    chainId: '0x61',
-    chainName: 'BSC Testnet',
-    nativeCurrency: { name: 'tBNB', symbol: 'tBNB', decimals: 18 },
-    rpcUrls: ['https://data-seed-prebsc-1-s1.binance.org:8545'],
-    blockExplorerUrls: ['https://testnet.bscscan.com'],
-  },
-  '0xa869': {
-    chainId: '0xa869',
-    chainName: 'Avalanche Fuji',
-    nativeCurrency: { name: 'Avalanche', symbol: 'AVAX', decimals: 18 },
-    rpcUrls: ['https://api.avax-test.network/ext/bc/C/rpc'],
-    blockExplorerUrls: ['https://testnet.snowtrace.io'],
-  },
 }
 
 const CHAINS = Object.values(CHAIN_PARAMS).map(({ chainId, chainName }) => ({

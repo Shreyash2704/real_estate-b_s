@@ -7,6 +7,7 @@ import { SignInModal } from './auth/sign-in-modal'
 import { usePathname } from 'next/navigation'
 import { Menu, Moon, Sun, X } from 'lucide-react'
 import { useWallet } from '@/lib/use-wallet'
+import Image from 'next/image'
 
 export function Navbar() {
   const [isSignInOpen, setIsSignInOpen] = useState(false)
@@ -50,8 +51,9 @@ export function Navbar() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between h-16">
           <div className="flex items-center">
-            <Link href="/" className="text-slate-900 dark:text-white text-xl font-bold">
-              BlockEstate
+            <Link href="/" className="flex items-center gap-2 text-slate-900 dark:text-white text-xl font-bold">
+              <Image src="/logo.svg" alt="BlockEstate logo" width={32} height={32} />
+              <span>BlockEstate</span>
             </Link>
           </div>
           
@@ -76,13 +78,7 @@ export function Navbar() {
               About
             </Link>
             
-            <Button 
-              variant="outline" 
-              className="bg-slate-900/5 border-slate-200 hover:bg-slate-900/10 text-slate-900 dark:bg-white/10 dark:border-white/20 dark:hover:bg-white/20 dark:text-white font-medium"
-              onClick={() => setIsSignInOpen(true)}
-            >
-              Sign In
-            </Button>
+            
             <div className="relative">
               {walletAddress ? (
                 <Button
@@ -104,7 +100,7 @@ export function Navbar() {
               )}
               {walletAddress && isWalletMenuOpen ? (
                 <div className="absolute right-0 mt-2 w-56 rounded-md border border-slate-200 bg-white shadow-lg dark:border-white/20 dark:bg-[#0B1120]">
-                  <div className="px-4 py-3 text-xs text-slate-500 dark:text-gray-300">
+                  <div className="px-4 py-3 text-md text-slate-500 dark:text-gray-300">
                     {chainLabel}
                   </div>
                   <div className="px-4 pb-3">
@@ -167,7 +163,15 @@ export function Navbar() {
                 }`}
               />
             </button>
+            <Button 
+              variant="outline" 
+              className="bg-slate-900/5 border-slate-200 hover:bg-slate-900/10 text-slate-900 dark:bg-white/10 dark:border-white/20 dark:hover:bg-white/20 dark:text-white font-medium"
+              onClick={() => setIsSignInOpen(true)}
+            >
+              Sign In
+            </Button>
           </div>
+
 
           {/* Mobile Menu Button */}
           <div className="md:hidden flex items-center">

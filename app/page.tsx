@@ -22,7 +22,7 @@ export default function Page() {
                 <span className="block">Invest in Real Estate</span>
                 <span className="block text-[#3B82F6]">with Blockchain</span>
               </h1>
-              <p className="mt-3 text-basetext-gray-300 sm:mt-5 sm:text-lg sm:max-w-xl sm:mx-auto md:mt-5 md:text-xl lg:mx-0 transition-colors duration-300">
+              <p className="mt-3 text-gray-300 sm:mt-5 sm:text-lg sm:max-w-xl sm:mx-auto md:mt-5 md:text-xl lg:mx-0 duration-300">
                 BlockEstate revolutionizes property investment through fractional ownership. 
                 Invest in premium real estate with cryptocurrency, starting from just $100.
               </p>
