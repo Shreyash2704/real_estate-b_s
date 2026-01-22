@@ -6,12 +6,27 @@ import Link from 'next/link'
 import { SignInModal } from './auth/sign-in-modal'
 import { usePathname } from 'next/navigation'
 import { Menu, Moon, Sun, X } from 'lucide-react'
+import { useWallet } from '@/lib/use-wallet'
 
 export function Navbar() {
   const [isSignInOpen, setIsSignInOpen] = useState(false)
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
   const [isDarkMode, setIsDarkMode] = useState(false)
+  const [isWalletMenuOpen, setIsWalletMenuOpen] = useState(false)
   const pathname = usePathname()
+  const {
+    hasMetaMask,
+    walletAddress,
+    chainId,
+    chainLabel,
+    chains,
+    isConnecting,
+    connectWallet,
+    selectAccount,
+    disconnectWallet,
+    switchChain,
+    shortAddress,
+  } = useWallet()
 
   const isActive = (path: string) => pathname === path
 
@@ -68,6 +83,72 @@ export function Navbar() {
             >
               Sign In
             </Button>
+            <div className="relative">
+              {walletAddress ? (
+                <Button
+                  variant="outline"
+                  className="bg-slate-900/5 border-slate-200 hover:bg-slate-900/10 text-slate-900 dark:bg-white/10 dark:border-white/20 dark:hover:bg-white/20 dark:text-white font-medium"
+                  onClick={() => setIsWalletMenuOpen((open) => !open)}
+                >
+                  {shortAddress(walletAddress)}
+                </Button>
+              ) : (
+                <Button
+                  variant="outline"
+                  className="bg-slate-900/5 border-slate-200 hover:bg-slate-900/10 text-slate-900 dark:bg-white/10 dark:border-white/20 dark:hover:bg-white/20 dark:text-white font-medium"
+                  onClick={connectWallet}
+                  disabled={isConnecting}
+                >
+                  {!hasMetaMask ? 'Install MetaMask' : (isConnecting ? 'Connecting...' : 'Connect Wallet')}
+                </Button>
+              )}
+              {walletAddress && isWalletMenuOpen ? (
+                <div className="absolute right-0 mt-2 w-56 rounded-md border border-slate-200 bg-white shadow-lg dark:border-white/20 dark:bg-[#0B1120]">
+                  <div className="px-4 py-3 text-xs text-slate-500 dark:text-gray-300">
+                    {chainLabel}
+                  </div>
+                  <div className="px-4 pb-3">
+                    <label className="block text-xs text-slate-500 dark:text-gray-300 mb-1">
+                      Network
+                    </label>
+                    <select
+                      aria-label="Select network"
+                      value={chainId ?? ''}
+                      onChange={(event) => switchChain(event.target.value)}
+                      className="h-9 w-full rounded-md border border-slate-200 bg-white px-2 text-sm text-slate-700 dark:border-white/20 dark:bg-white/10 dark:text-white"
+                    >
+                      <option value="" disabled>
+                        Select network
+                      </option>
+                      {chains.map((chain) => (
+                        <option key={chain.id} value={chain.id}>
+                          {chain.label}
+                        </option>
+                      ))}
+                    </select>
+                  </div>
+                  <div className="px-4 pb-4">
+                    {/* <Button
+                      variant="outline"
+                      className="mb-2 w-full bg-slate-900/5 border-slate-200 hover:bg-slate-900/10 text-slate-900 dark:bg-white/10 dark:border-white/20 dark:hover:bg-white/20 dark:text-white font-medium"
+                      onClick={selectAccount}
+                    >
+                      Change Account
+                    </Button> */}
+                    <Button
+                      variant="outline"
+                      className="w-full bg-slate-900/5 border-slate-200 hover:bg-slate-900/10 text-slate-900 dark:bg-white/10 dark:border-white/20 dark:hover:bg-white/20 dark:text-white font-medium"
+                      onClick={() => {
+                        disconnectWallet()
+                        setIsWalletMenuOpen(false)
+                      }}
+                    >
+                      Disconnect
+                    </Button>
+                  </div>
+                </div>
+              ) : null}
+            </div>
             <button
               type="button"
               onClick={toggleTheme}
@@ -160,6 +241,74 @@ export function Navbar() {
             >
               Sign In
             </Button>
+            {walletAddress ? (
+              <>
+                <Button
+                  variant="outline"
+                  className="w-full bg-slate-900/5 border-slate-200 hover:bg-slate-900/10 text-slate-900 dark:bg-white/10 dark:border-white/20 dark:hover:bg-white/20 dark:text-white font-medium"
+                  onClick={() => setIsWalletMenuOpen((open) => !open)}
+                >
+                  {shortAddress(walletAddress)}
+                </Button>
+                {isWalletMenuOpen ? (
+                  <div className="rounded-md border border-slate-200 bg-white/70 px-4 py-3 text-sm text-slate-700 dark:border-white/20 dark:bg-white/10 dark:text-white">
+                    <div className="text-xs text-slate-500 dark:text-gray-300 mb-2">
+                      {chainLabel}
+                    </div>
+                    <label className="block text-xs text-slate-500 dark:text-gray-300 mb-1">
+                      Network
+                    </label>
+                    <select
+                      aria-label="Select network"
+                      value={chainId ?? ''}
+                      onChange={(event) => {
+                        switchChain(event.target.value)
+                      }}
+                      className="h-9 w-full rounded-md border border-slate-200 bg-white px-2 text-sm text-slate-700 dark:border-white/20 dark:bg-white/10 dark:text-white"
+                    >
+                      <option value="" disabled>
+                        Select network
+                      </option>
+                      {chains.map((chain) => (
+                        <option key={chain.id} value={chain.id}>
+                          {chain.label}
+                        </option>
+                      ))}
+                    </select>
+                    <Button
+                      variant="outline"
+                      className="mt-3 w-full bg-slate-900/5 border-slate-200 hover:bg-slate-900/10 text-slate-900 dark:bg-white/10 dark:border-white/20 dark:hover:bg-white/20 dark:text-white font-medium"
+                      onClick={selectAccount}
+                    >
+                      Change Account
+                    </Button>
+                    <Button
+                      variant="outline"
+                      className="mt-2 w-full bg-slate-900/5 border-slate-200 hover:bg-slate-900/10 text-slate-900 dark:bg-white/10 dark:border-white/20 dark:hover:bg-white/20 dark:text-white font-medium"
+                      onClick={() => {
+                        disconnectWallet()
+                        setIsWalletMenuOpen(false)
+                        setIsMobileMenuOpen(false)
+                      }}
+                    >
+                      Disconnect
+                    </Button>
+                  </div>
+                ) : null}
+              </>
+            ) : (
+              <Button
+                variant="outline"
+                className="w-full bg-slate-900/5 border-slate-200 hover:bg-slate-900/10 text-slate-900 dark:bg-white/10 dark:border-white/20 dark:hover:bg-white/20 dark:text-white font-medium"
+                onClick={() => {
+                  connectWallet()
+                  setIsMobileMenuOpen(false)
+                }}
+                disabled={isConnecting}
+              >
+                {!hasMetaMask ? 'Install MetaMask' : (isConnecting ? 'Connecting...' : 'Connect Wallet')}
+              </Button>
+            )}
           </div>
         </div>
       )}
