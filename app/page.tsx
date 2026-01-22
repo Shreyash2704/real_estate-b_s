@@ -11,18 +11,18 @@ import { properties } from '@/lib/properties-data'
 
 export default function Page() {
   return (
-    <div className="min-h-screen bg-[#0B1120] text-gray-100">
+    <div className="min-h-screen bg-background text-foreground transition-colors duration-300">
       {/* Hero Section */}
-      <div className="relative bg-[#0B1120] h-[80vh]">
+      <div className="relative bg-slate-50 dark:bg-[#0B1120] h-[80vh] transition-colors duration-300">
         <HeroCarousel />
         <div className="relative z-20 h-full">
           <div className="max-w-7xl mx-auto h-full flex items-center px-4 sm:px-6 lg:px-8">
             <div className="text-center lg:text-left">
-              <h1 className="text-4xl tracking-tight font-extrabold text-white sm:text-5xl md:text-6xl lg:text-7xl">
+              <h1 className="text-4xl tracking-tight font-extrabold text-slate-900 dark:text-white sm:text-5xl md:text-6xl lg:text-7xl transition-colors duration-300">
                 <span className="block">Invest in Real Estate</span>
                 <span className="block text-[#3B82F6]">with Blockchain</span>
               </h1>
-              <p className="mt-3 text-base text-gray-300 sm:mt-5 sm:text-lg sm:max-w-xl sm:mx-auto md:mt-5 md:text-xl lg:mx-0">
+              <p className="mt-3 text-basetext-gray-300 sm:mt-5 sm:text-lg sm:max-w-xl sm:mx-auto md:mt-5 md:text-xl lg:mx-0 transition-colors duration-300">
                 BlockEstate revolutionizes property investment through fractional ownership. 
                 Invest in premium real estate with cryptocurrency, starting from just $100.
               </p>
@@ -34,7 +34,7 @@ export default function Page() {
                   </Button>
                 </div>
                 <div className="mt-3 sm:mt-0 sm:ml-3">
-                  <Button variant="outline" size="lg" className="w-full bg-white/10 backdrop-blur-sm text-white border-white/20 hover:bg-white/20">
+                  <Button variant="outline" size="lg" className="w-full bg-slate-900/5 dark:bg-white/10 backdrop-blur-sm text-slate-900 dark:text-white border-slate-200 dark:border-white/20 hover:bg-slate-900/10 dark:hover:bg-white/20">
                     Learn More
                   </Button>
                 </div>
@@ -45,12 +45,12 @@ export default function Page() {
       </div>
 
       {/* Featured Properties */}
-      <div className="bg-gray-800/50 py-12">
+      <div className="bg-slate-100 dark:bg-gray-800/50 py-12 transition-colors duration-300">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h2 className="text-3xl font-extrabold tracking-tight text-white">Featured Properties</h2>
+          <h2 className="text-3xl font-extrabold tracking-tight text-slate-900 dark:text-white transition-colors duration-300">Featured Properties</h2>
           <div className="mt-6 grid gap-6 lg:grid-cols-3">
             {properties.map((property) => (
-              <Card key={property.id} className="overflow-hidden bg-gray-700/50 border-gray-600">
+              <Card key={property.id} className="overflow-hidden bg-white dark:bg-gray-700/50 border-slate-200 dark:border-gray-600 transition-colors duration-300">
                 <Image
                   src={property.image}
                   alt={property.title}
@@ -59,8 +59,8 @@ export default function Page() {
                   className="w-full h-48 object-cover"
                 />
                 <CardContent className="p-4">
-                  <h3 className="text-lg font-semibold text-white">{property.title}</h3>
-                  <p className="text-sm text-gray-300 mt-1">{property.location}</p>
+                  <h3 className="text-lg font-semibold text-slate-900 dark:text-white transition-colors duration-300">{property.title}</h3>
+                  <p className="text-sm text-slate-600 dark:text-gray-300 mt-1 transition-colors duration-300">{property.location}</p>
                   <div className="flex justify-between items-center mt-4">
                     <span className="text-[#3B82F6] font-bold">${property.price.toLocaleString()}</span>
                     <span className="text-[#10B981]">Expected ROI: {property.roi}%</span>
@@ -78,9 +78,9 @@ export default function Page() {
       </div>
 
       {/* How It Works section */}
-      <div className="bg-[#0B1120] py-12">
+      <div className="bg-slate-50 dark:bg-[#0B1120] py-12 transition-colors duration-300">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h2 className="text-3xl font-extrabold tracking-tight text-white text-center">How It Works</h2>
+          <h2 className="text-3xl font-extrabold tracking-tight text-slate-900 dark:text-white text-center transition-colors duration-300">How It Works</h2>
           <div className="mt-10">
             <div className="grid grid-cols-1 gap-10 sm:grid-cols-2 lg:grid-cols-4">
               {[
@@ -93,8 +93,8 @@ export default function Page() {
                   <div className="flex items-center justify-center h-12 w-12 rounded-md bg-[#3B82F6] text-white mx-auto">
                     <step.icon className="h-6 w-6" />
                   </div>
-                  <h3 className="mt-4 text-lg font-medium text-white">{step.title}</h3>
-                  <p className="mt-2 text-base text-gray-400">{step.description}</p>
+                  <h3 className="mt-4 text-lg font-medium text-slate-900 dark:text-white transition-colors duration-300">{step.title}</h3>
+                  <p className="mt-2 text-base text-slate-600 dark:text-gray-400 transition-colors duration-300">{step.description}</p>
                 </div>
               ))}
             </div>
@@ -103,43 +103,43 @@ export default function Page() {
       </div>
 
       {/* Footer */}
-      <footer className="bg-gray-800/50">
+      <footer className="bg-slate-100 dark:bg-gray-800/50 transition-colors duration-300">
         <div className="max-w-7xl mx-auto py-12 px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-2 gap-8 md:grid-cols-4">
             <div>
-              <h3 className="text-sm font-semibold text-gray-400 tracking-wider uppercase">Company</h3>
+              <h3 className="text-sm font-semibold text-slate-500 dark:text-gray-400 tracking-wider uppercase transition-colors duration-300">Company</h3>
               <ul className="mt-4 space-y-4">
-                <li><Link href="#" className="text-base text-gray-300 hover:text-white">About</Link></li>
-                <li><Link href="#" className="text-base text-gray-300 hover:text-white">Careers</Link></li>
-                <li><Link href="#" className="text-base text-gray-300 hover:text-white">Contact</Link></li>
+                <li><Link href="#" className="text-base text-slate-600 hover:text-slate-900 dark:text-gray-300 dark:hover:text-white transition-colors duration-300">About</Link></li>
+                <li><Link href="#" className="text-base text-slate-600 hover:text-slate-900 dark:text-gray-300 dark:hover:text-white transition-colors duration-300">Careers</Link></li>
+                <li><Link href="#" className="text-base text-slate-600 hover:text-slate-900 dark:text-gray-300 dark:hover:text-white transition-colors duration-300">Contact</Link></li>
               </ul>
             </div>
             <div>
-              <h3 className="text-sm font-semibold text-gray-400 tracking-wider uppercase">Resources</h3>
+              <h3 className="text-sm font-semibold text-slate-500 dark:text-gray-400 tracking-wider uppercase transition-colors duration-300">Resources</h3>
               <ul className="mt-4 space-y-4">
-                <li><Link href="#" className="text-base text-gray-300 hover:text-white">Blog</Link></li>
-                <li><Link href="#" className="text-base text-gray-300 hover:text-white">Whitepaper</Link></li>
-                <li><Link href="#" className="text-base text-gray-300 hover:text-white">FAQ</Link></li>
+                <li><Link href="#" className="text-base text-slate-600 hover:text-slate-900 dark:text-gray-300 dark:hover:text-white transition-colors duration-300">Blog</Link></li>
+                <li><Link href="#" className="text-base text-slate-600 hover:text-slate-900 dark:text-gray-300 dark:hover:text-white transition-colors duration-300">Whitepaper</Link></li>
+                <li><Link href="#" className="text-base text-slate-600 hover:text-slate-900 dark:text-gray-300 dark:hover:text-white transition-colors duration-300">FAQ</Link></li>
               </ul>
             </div>
             <div>
-              <h3 className="text-sm font-semibold text-gray-400 tracking-wider uppercase">Legal</h3>
+              <h3 className="text-sm font-semibold text-slate-500 dark:text-gray-400 tracking-wider uppercase transition-colors duration-300">Legal</h3>
               <ul className="mt-4 space-y-4">
-                <li><Link href="#" className="text-base text-gray-300 hover:text-white">Privacy Policy</Link></li>
-                <li><Link href="#" className="text-base text-gray-300 hover:text-white">Terms of Service</Link></li>
+                <li><Link href="#" className="text-base text-slate-600 hover:text-slate-900 dark:text-gray-300 dark:hover:text-white transition-colors duration-300">Privacy Policy</Link></li>
+                <li><Link href="#" className="text-base text-slate-600 hover:text-slate-900 dark:text-gray-300 dark:hover:text-white transition-colors duration-300">Terms of Service</Link></li>
               </ul>
             </div>
             <div>
-              <h3 className="text-sm font-semibold text-gray-400 tracking-wider uppercase">Connect</h3>
+              <h3 className="text-sm font-semibold text-slate-500 dark:text-gray-400 tracking-wider uppercase transition-colors duration-300">Connect</h3>
               <ul className="mt-4 space-y-4">
-                <li><Link href="#" className="text-base text-gray-300 hover:text-white">Twitter</Link></li>
-                <li><Link href="#" className="text-base text-gray-300 hover:text-white">LinkedIn</Link></li>
-                <li><Link href="#" className="text-base text-gray-300 hover:text-white">Telegram</Link></li>
+                <li><Link href="#" className="text-base text-slate-600 hover:text-slate-900 dark:text-gray-300 dark:hover:text-white transition-colors duration-300">Twitter</Link></li>
+                <li><Link href="#" className="text-base text-slate-600 hover:text-slate-900 dark:text-gray-300 dark:hover:text-white transition-colors duration-300">LinkedIn</Link></li>
+                <li><Link href="#" className="text-base text-slate-600 hover:text-slate-900 dark:text-gray-300 dark:hover:text-white transition-colors duration-300">Telegram</Link></li>
               </ul>
             </div>
           </div>
-          <div className="mt-8 border-t border-gray-700 pt-8">
-            <p className="text-base text-gray-400 xl:text-center">
+          <div className="mt-8 border-t border-slate-200 dark:border-gray-700 pt-8 transition-colors duration-300">
+            <p className="text-base text-slate-500 dark:text-gray-400 xl:text-center transition-colors duration-300">
               &copy; 2024 BlockEstate. All rights reserved.
             </p>
           </div>
